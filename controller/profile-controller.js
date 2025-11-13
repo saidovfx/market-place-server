@@ -1,8 +1,8 @@
 import User from "../models/User.js"
 import  mongoose from "mongoose"
 import isValidObjectId from "../lib/checkIsValidId.js"
-const renameUserInfo=async(req,res)=>{
-const userID=req.user._id
+ export const renameUserInfo=async(req,res)=>{
+ const userID=req.user._id
     if(!isValidObjectId(userID)) return res.status(400).json({warning:"User is not valid"})
 
     try {
@@ -29,10 +29,9 @@ const userID=req.user._id
 }
 
 
-module.exports=renameUserInfo
 
 
-const addNewAddress=async(req,res)=>{
+  export const addNewAddress=async(req,res)=>{
 try {
     const userID = req.user._id
 
@@ -56,11 +55,10 @@ res.status(200).json({success:"Address added successfully"})
 }
 }
 
-module.exports=addNewAddress
 
 
 
-const renameAdress=async(req,res)=>{
+ export const renameAdress=async(req,res)=>{
     try {
 const userID=req.user._id
   const addressID =req.params.addressId
@@ -92,10 +90,9 @@ res.status(200).json({success:"Address renamed successfully"})
     }
 }
 
-module.exports=renameAdress
 
 
-const deleteAddress=async(req,res)=>{
+ export const deleteAddress=async(req,res)=>{
     try {
       const userID = req.user._id
   const addressID =req.params.addressId
@@ -124,4 +121,3 @@ res.status(200).json({success:"Address deleted successfully"})
     }
 }
 
-module.exports=deleteAddress

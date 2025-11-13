@@ -1,9 +1,9 @@
-import User from "../models/User";
+
 import jwt from "jsonwebtoken"
-import ENV from "../lib/ENV";
+import ENV from "../lib/ENV.js"
 const authenTokenCheck=async(req,res,next)=>{
     try {
-        const token=res.cookie.token
+        const token=req.cookies.marketToken    
         if(!token)
             return res.status(404).json({warning:"Token is not exists"})
 
